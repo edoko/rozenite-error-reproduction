@@ -4,6 +4,7 @@
  *
  * @type {import('@react-native/metro-config').MetroConfig}
  */
+const { withRozenite } = require('@rozenite/metro');
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 const { withNativeWind } = require('nativewind/metro');
 const {
@@ -13,7 +14,7 @@ const {
 const defaultConfig = getDefaultConfig(__dirname);
 const { assetExts, sourceExts } = defaultConfig.resolver;
 
-module.exports = wrapWithReanimatedMetroConfig(
+module.exports = withRozenite(wrapWithReanimatedMetroConfig(
   withNativeWind(
     mergeConfig(defaultConfig, {
       transformer: {
@@ -47,4 +48,4 @@ module.exports = wrapWithReanimatedMetroConfig(
       inlineRem: 16,
     },
   ),
-);
+));
